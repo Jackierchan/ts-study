@@ -10,3 +10,6 @@ function exam(a) {
 exam(1);
 //static typing静态类型
 //定义后类型不可改变
+
+let a: number = 1
+a='2'

@@ -12,5 +12,7 @@ function test(){
 }
 
 let user:[string,number]=['aaa',1]
-//user.push(true) 报错
+// user.push(true) 报错
 user.push(2) //必须是元祖中的类型
+
+// user.push()
