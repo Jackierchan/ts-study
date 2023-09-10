@@ -45,3 +45,5 @@ let testomit1:testOmit1 =  {
     // name:'aaa',
     sex:true
 }
+
+//record

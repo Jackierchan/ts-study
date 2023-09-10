@@ -14,3 +14,14 @@ let xiaoming:Person={
     // age:18
 }
 //xiaoming.id=2  id为只读属性，改变会报错
+
+interface Fn {
+    <Type>(arg:Type): Type;
+  }
+  
+  function id<Type>(arg:Type): Type {
+    return arg;
+  }
+  
+  let myId:Fn = id;
+  

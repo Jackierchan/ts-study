@@ -29,3 +29,13 @@ function prop<Obj, K extends keyof Obj>(
   }
   prop({a:1},'a')
 //   y.name = 'b'
+type MyObj = {
+  foo: number,
+  bar: string,
+};
+type Keys = keyof MyObj; // 'foo'|'bar'
+type KeyT = keyof any;
+type Result = keyof ['a', 'b', 'c'];
+let a: Result=1
+// 返回 number | "0" | "1" | "2"
+// | "length" | "pop" | "push" | ···

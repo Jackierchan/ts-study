@@ -62,5 +62,25 @@ type T3<A  extends boolean,B extends string ='bbb'> = [A,B]
 type T4=T3<true>
 let arr5:T4 = [true,'bbb']
 
+type a = keyof any
+let myId:<T>(arg:T) => T = function (arg) {
+    return arg;
+  };
+  myId('a')
 
+
+  class Pair<K, V> {
+    key: K;
+    value: V;
+    onchange(arg:K):V{
+        return this.value
+    }
+  }
+  let pp :Pair<string,number>={
+    key:'11',
+    value:11,
+    onchange(){
+        return  this.value
+    }
+  }
 export {}

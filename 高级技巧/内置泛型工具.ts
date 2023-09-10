@@ -34,6 +34,7 @@ type test = {
 type deepPartail<T> = {
     [p in keyof T]+? : T[p] extends Object?deepPartail<T[p]>:T[p]
 }
+
 type r = deepPartail<test>
 type y = Partial<test>
 
@@ -74,15 +75,5 @@ type Myextract<U,T> =U extends T?U:never
 type testUn1=Myextract<un,1>
 let d:testUn1 = 1
 let e:testUn1 = '2'
-
-//pick omit
-
-
-
-//record
-
-
-
-
 export {}
 
