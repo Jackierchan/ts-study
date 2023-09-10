@@ -1,5 +1,5 @@
 
-//Readonly Partial deepPartial Required
+//Readonly 
 type MyReadonly<T> ={
     +readonly [p in keyof T ]:T[p]
   }
@@ -17,10 +17,43 @@ let y :q={
 } 
 // y.name = 'b'
 
+
+type test = {
+    a:1
+    b:'3',
+    c:{
+        d:4
+        e:{
+            f:5
+        }
+
+    }
+}
+//Partial deepPartial
+
+type deepPartail<T> = {
+    [p in keyof T]+? : T[p] extends Object?deepPartail<T[p]>:T[p]
+}
+type r = deepPartail<test>
+type y = Partial<test>
+
+let z :r= {
+ c:{
+    d:4
+ }
+}
+
+let t :y= {
+ c:{
+    d:4
+ }
+}
+
 type MyPartial<T> ={
     [p in keyof T]+?: T[p]
 }
 
+//Required
 type MyRequired<T> ={
     [p in keyof T]-?: T[p]
 }

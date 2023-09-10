@@ -15,3 +15,4 @@ interface ISum {
     (x:number,y:number,z?:number):number 
 }
 const  add3:ISum=add
+add3(1,2,3)
