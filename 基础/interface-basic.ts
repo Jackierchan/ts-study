@@ -24,4 +24,15 @@ interface Fn {
   }
   
   let myId:Fn = id;
-  
+
+//可以重复定义
+interface A{
+  name: string;
+}
+interface A{
+  age: number;
+}
+
+let a:A={
+
+}

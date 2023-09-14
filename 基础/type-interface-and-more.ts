@@ -26,3 +26,6 @@ function getLength2(input:string|number):number{
         return input.toString().length
     }
 }
+
+type ZZZ = 1
+

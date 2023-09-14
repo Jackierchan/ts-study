@@ -1,9 +1,19 @@
+
+type IndexOf<T extends any[], U, R extends any[] = []> = 
+T extends [infer K, ...infer Rest]
+  ? K extends U
+    ? R['length']
+    : IndexOf<Rest, U, [...R, 1]>
+  : -1
+
 type MergeValues<One, Other> = 
     One extends Other 
         ? One
-        : Other extends unknown[]
-            ? [One, ...Other]
-            : [One, Other];
+        : Other extends unknown[]? 
+            IndexOf<Other,One> extends -1?
+            [One, ...Other]
+            : Other
+            :[One, Other]
 
 
 type MergeParams<
@@ -20,12 +30,12 @@ type MergeParams<
             : never
 }
 
-
 type ParseParam<Param extends string> = 
     Param extends `${infer Key}=${infer Value}`
         ? {
-            [K in Key]: Value 
-        } : Record<string, any>;
+            [p in Key]: Value 
+        } : Param extends '' ? {} : { [K in Param]: true }
+        // Record<string, any>;
 
 type ParseQueryString<Str extends string>
     = Str extends `${infer Param}&${infer Rest}`
@@ -51,7 +61,8 @@ function parseQueryString<T extends string>(queryStr:T): ParseQueryString<T> {
             queryObj[key] = value;
         }
     });
-    return queryObj as ParseQueryString<T>;
+    return queryObj as any;
 }
-const attend = parseQueryString('a=2&b=3&true=4&d=5&e=')
-// attend.
+const attend = parseQueryString('a=2&a=3&a=2&b=3&1=4&d=5&e')
+attend.
+type C =ParseQueryString<'a=2&a=3&a=2&b=3&true=4&d=5&e'>
